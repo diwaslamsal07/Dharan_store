@@ -1,136 +1,404 @@
-/* Basic styling for the page */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #f4f4f4; /* Light grey background */
 }
 
-/* Header styling */
-header {
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    align-items: center;
-}
-
-header .logo h1 {
+h1 {
     margin: 0;
+    font-size: 2.5em; /* Larger font size for headings */
+}
+
+h2 {
+    font-size: 2em; /* Slightly smaller font size */
+}
+
+/* Header Styles */
+header {
+    background-color: #282c34; /* Dark header background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #333; /* Dark background for the nav */
+    color: white;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none; /* Remove bullets */
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin-left: 15px;
+    display: inline; /* Horizontal layout */
+    margin: 0 15px; /* Space between items */
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Add padding */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-/* Hero section styling */
+nav ul li a:hover {
+    background-color: #61dafb; /* Highlight color on hover */
+    color: #282c34; /* Change text color on hover */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Hero Section */
 .hero {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
-}
-
-.hero h2 {
-    margin: 0 0 20px;
-}
-
-.hero button {
-    padding: 10px 20px;
-    background-color: #333;
+    animation: colorChange 10s infinite; /* Background color changes over 10 seconds */
     color: white;
-    border: none;
-    cursor: pointer;
-}
-
-/* Product grid */
-.products {
-    padding: 20px;
-    background-color: #fff;
-}
-
-.products h3 {
+    padding: 40px;
     text-align: center;
 }
+
+@keyframes colorChange {
+    0% { background-color: rgb(255, 99, 71); /* Tomato */ }
+    25% { background-color: rgb(100, 149, 237); /* Cornflower Blue */ }
+    50% { background-color: rgb(60, 179, 113); /* Medium Sea Green */ }
+    75% { background-color: rgb(255, 215, 0); /* Gold */ }
+    100% { background-color: rgb(255, 99, 71); /* Back to Tomato */ }
+}
+
+
+
+/* Product Name Styles */
+
+.product-name {
+    font-size: 1.5em;
+    color: #FF6347;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.product-name::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 99, 71, 0.3);
+    border-radius: 10px;
+    z-index: -1;
+    transition: transform 0.3s;
+}
+
+.product-name:hover::before {
+    transform: scale(1.05);
+}
+
+.product-name {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 99, 71, 0.7), 0 0 5px rgba(255, 99, 71, 0.9);
+}
+
+/* Product Grid and Product Styles */
 
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .product {
     border: 1px solid #ddd;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
+    width: 200px;
+    margin: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    overflow: hidden;
 }
 
 .product img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
 }
 
-.product button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
+.product:hover {
+    transform: scale(1.05);
 }
 
-/* Contact form section */
+.product:hover img {
+    transform: rotateY(10deg) rotateX(10deg);
+}
+
+.product h4 {
+    color: #fff;
+    background: linear-gradient(to right, #FF6347, #FFD700);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 2s linear; /* Add transition property */
+}
+
+h4:hover {
+    background: linear-gradient(to right, #FFD700, #FF6347); /* Reverse the gradient on hover */
+} 
+
+/* Price and Discount Styling */
+.discounted-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e60000; /* Red color for the final price */
+    margin-bottom: 5px;
+}
+
+.original-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 10px;
+}
+
+.discount-percentage {
+    font-size: 14px;
+    color: #28a745; /* Green for discount percentage */
+    margin-bottom: 15px;
+}
+
+.price {
+    color: #ff4500;
+}
+
+.final-price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.discount {
+    color: green;
+    font-weight: bold;
+}
+
+/* Contact Form */
 .contact-form {
-    background-color: #f4f4f4;
+    background-color: #fff;
     padding: 20px;
-    text-align: center;
+    margin: 40px 20px; /* Combined margin */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    margin-bottom: 20px;
+    color: #FF6347; /* Tomato color */
+    transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .contact-form form {
-    max-width: 600px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
 .contact-form label {
-    margin: 10px 0 5px;
-    text-align: left;
+    margin-bottom: 5px;
+    color: #333; /* Dark gray */
+    transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
-.contact-form input,
+.contact-form input, 
 .contact-form textarea {
-    padding: 10px;
     margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    color: #666; /* Lighter gray */
+    transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .contact-form button {
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
+    color: #fff; /* White text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for button */
 }
 
-/* Footer styling */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
+/* Hover effects */
+.contact-form label:hover,
+.contact-form input:hover,
+.contact-form textarea:hover {
+    color: #FFD700; /* Gold color */
 }
+
+.contact-form button:hover {
+    background-color: #218838; /* Dark green background */
+    color: #000; /* Black text */
+}
+
+/* Additional hover effects for the entire form */
+.contact-form:hover h3 {
+    color: #FF8C00; /* Orange color */
+}
+
+.contact-form:hover label {
+    color: #000; /* Black color */
+}
+
+.contact-form:hover input,
+.contact-form:hover textarea {
+    color: #999; /* Darker gray */
+}
+
+.contact-form:hover button {
+    background-color: #218838; /* Ensure button retains hover background */
+}
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar {
+    overflow-y: scroll;
+}
+
+/* Webkit browsers (Chrome, Safari, etc.) */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+    border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Scrollbar for other browsers (Firefox) */
+.custom-scrollbar {
+    scrollbar-color: var(--scrollbar-thumb-color) #f1f1f1;
+    scrollbar-width: thin;
+}
+
+/* Keyframes for Fade-In Effect */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Button Styles */
+
+button {
+    background-color: #FF6347;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #FFD700;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #FF8C00; /* Slightly darker orange */
+    transform: scale(0.95); /* Slightly shrink the button */
+    color: #000; /* Change text color to black */
+}
+
+/* Card Styles */
+.card {
+    background: white; /* Card background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Inner padding */
+    margin: 20px; /* Margin between cards */
+    transition: transform 0.3s; /* Smooth transition */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #282c34; /* Dark background for footer */
+    color: white; /* Text color */
+    text-align: center; /* Centered text */
+    padding: 20px; /* Padding */
+    position: relative; /* Relative position for footer */
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 10px 0; /* Margin for paragraph */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stack items on small screens */
+        margin: 10px 0; /* Space between items */
+    }
+    
+    .hero {
+        padding: 20px; /* Adjust padding on smaller screens */
+    }
+    
+    h1, h2 {
+        font-size: 1.8em; /* Reduce font size */
+    }
+    
+    .button {
+        width: 100%; /* Full-width buttons */
+        padding: 15px; /* Increase padding */
+    }
+}
+
+/* Product Name Styles */
+.product-name {
+    font-size: 1.5em; /* Increase font size */
+    color: #FF6347; /* Tomato color for text */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center align the text */
+    text-transform: uppercase; /* Transform text to uppercase */
+    position: relative; /* Relative positioning for pseudo-elements */
+    margin: 10px 0; /* Margin around the heading */
+    padding: 10px; /* Padding for spacing */
+}
+
+/* Adding a text-shadow for a 3D effect */
+.product-name::before {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute; /* Positioning */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+    bottom: 0; /* Align to the bottom */
+    background: rgba(255, 99, 71, 0.3); /* Light transparent background */
+    border-radius: 10px; /* Rounded corners */
+    z-index: -1; /* Behind the text */
+    transition: transform 0.3s; /* Smooth transition */
+}
+
+/* Add a hover effect to animate the background */
+.product-name:hover::before {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Adding a small glow effect */
+.product-name {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 99, 71, 0.7), 0 0 5px rgba(255, 99, 71, 0.9);
+}
+
